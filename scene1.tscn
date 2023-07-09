@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccoktgqhvgx6u"]
+
+[ext_resource type="Shader" path="res://ObstacleShader.gdshader" id="1_bkwe6"]
+[ext_resource type="Script" path="res://Pusher.gd" id="2_lalgk"]
+
+[sub_resource type="Environment" id="Environment_en0tp"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2a5l4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_opcwu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5wfb"]
+render_priority = 0
+shader = ExtResource("1_bkwe6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s35yc"]
+render_priority = 0
+shader = ExtResource("1_bkwe6")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_en0tp")
+camera_attributes = SubResource("CameraAttributesPractical_2a5l4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29341, 8.35831)
+
+[node name="Ball" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.80822, 0)
+
+[node name="Esfera" type="CSGSphere3D" parent="Ball"]
+rings = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_opcwu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1.13133e-08, -0.5, 0.866025, 1, -3.09086e-08, -3.09086e-08, 4.2222e-08, 0.866025, 0.5, 0, 9.77663, 0)
+
+[node name="Scenary" type="Node" parent="."]
+
+[node name="Wall" type="CSGBox3D" parent="Scenary"]
+transform = Transform3D(10.985, 0, 0, 0, 17.35, 0, 0, 0, 0.502854, 0, 0, -0.682099)
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Scenary"]
+transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 0, -0.0575919)
+use_collision = true
+
+[node name="Obstacle" type="CSGCylinder3D" parent="Scenary"]
+transform = Transform3D(0.28643, 0, 0, 0, -1.71128e-08, -0.288454, 0, 0.391495, -1.26087e-08, -0.897378, 1.98295, 0)
+material_override = SubResource("ShaderMaterial_o5wfb")
+use_collision = true
+
+[node name="Obstacle2" type="CSGCylinder3D" parent="Scenary"]
+transform = Transform3D(0.28643, 0, 0, 0, -1.71128e-08, -0.288454, 0, 0.391495, -1.26087e-08, 0.429868, 3.65056, 0)
+material_override = SubResource("ShaderMaterial_s35yc")
+use_collision = true
+
+[node name="Pusher" type="CSGBox3D" parent="Scenary"]
+transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 0.603926, -2.39588)
+use_collision = true
+script = ExtResource("2_lalgk")
+
+[node name="Pusher2" type="CSGBox3D" parent="Scenary"]
+transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 1.02886, -4.19591)
+use_collision = true
+script = ExtResource("2_lalgk")
