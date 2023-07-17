@@ -1,0 +1,8 @@
+
+*.cache
+
+.godot/.gdignore
+
+.godot/editor/
+
+.godot/
