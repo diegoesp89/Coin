@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccoktgqhvgx6u"]
+[gd_scene load_steps=10 format=3 uid="uid://ccoktgqhvgx6u"]
 
 [ext_resource type="Shader" path="res://ObstacleShader.gdshader" id="1_bkwe6"]
 [ext_resource type="Material" uid="uid://itvrldwxnk6i" path="res://wall_mat.tres" id="1_dym7d"]
 [ext_resource type="Script" path="res://Pusher.gd" id="2_lalgk"]
 [ext_resource type="PackedScene" uid="uid://or5s51vq0ist" path="res://coin.tscn" id="3_mrw7i"]
+[ext_resource type="PackedScene" uid="uid://b5qn6gakeg0ow" path="res://coin_shooter.tscn" id="5_7eaar"]
 
 [sub_resource type="Environment" id="Environment_en0tp"]
 
@@ -63,12 +64,12 @@ mov = 1.7
 rate = -0.01
 
 [node name="Wall2" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, -5.63968, 4.88861, -0.135786)
+transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, -5.5, 4.889, -0.136)
 material_override = ExtResource("1_dym7d")
 use_collision = true
 
 [node name="Wall3" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, 5.62563, 4.88861, -0.135786)
+transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, 5.5, 4.889, -0.136)
 material_override = ExtResource("1_dym7d")
 use_collision = true
 
@@ -83,3 +84,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.4737
 
 [node name="Coin4" parent="." instance=ExtResource("3_mrw7i")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.531515, 5.49948, -0.116519)
+
+[node name="Coin_shooter" parent="." instance=ExtResource("5_7eaar")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 8.669, 0.582)

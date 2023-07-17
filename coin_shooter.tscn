@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b5qn6gakeg0ow"]
+
+[node name="Coin_shooter" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.584064, 3.86043, 0.582293)
+
+[node name="Cylinder" type="CSGCylinder3D" parent="."]
+height = 0.146482
+sides = 12
