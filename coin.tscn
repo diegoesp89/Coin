@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://or5s51vq0ist"]
+[gd_scene load_steps=3 format=3 uid="uid://or5s51vq0ist"]
+
+[ext_resource type="Material" uid="uid://bejolbjn0xpol" path="res://coin_mat.tres" id="1_uee8v"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wgkmo"]
 height = 0.142686
 
 [node name="Coin" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.584064, 3.86043, 0.582293)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mass = 50.0
+continuous_cd = true
+max_contacts_reported = 4
+can_sleep = false
 
 [node name="Cylinder" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = ExtResource("1_uee8v")
 height = 0.146482
 sides = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("CylinderShape3D_wgkmo")

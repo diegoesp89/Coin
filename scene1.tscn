@@ -1,22 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccoktgqhvgx6u"]
+[gd_scene load_steps=5 format=3 uid="uid://ccoktgqhvgx6u"]
 
-[ext_resource type="Shader" path="res://ObstacleShader.gdshader" id="1_bkwe6"]
-[ext_resource type="Material" uid="uid://itvrldwxnk6i" path="res://wall_mat.tres" id="1_dym7d"]
-[ext_resource type="Script" path="res://Pusher.gd" id="2_lalgk"]
+[ext_resource type="PackedScene" uid="uid://dhosspekmvbj" path="res://scenary.tscn" id="1_1hsw8"]
 [ext_resource type="PackedScene" uid="uid://or5s51vq0ist" path="res://coin.tscn" id="3_mrw7i"]
-[ext_resource type="PackedScene" uid="uid://b5qn6gakeg0ow" path="res://coin_shooter.tscn" id="5_7eaar"]
 
 [sub_resource type="Environment" id="Environment_en0tp"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2a5l4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5wfb"]
-render_priority = 0
-shader = ExtResource("1_bkwe6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s35yc"]
-render_priority = 0
-shader = ExtResource("1_bkwe6")
 
 [node name="Node3D" type="Node3D"]
 
@@ -30,60 +19,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29341, 10.83)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.802781, 0.636621, 0.634731, 0.437984, 0, 9.77663, 0)
 
-[node name="Scenary" type="Node" parent="."]
-
-[node name="Wall" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(10.985, -0.0144034, 0.000161484, 0.0091194, 17.35, -1.0066e-06, -0.00352764, 3.96023e-05, 0.502854, 0, 4.88861, -0.682099)
-material_override = ExtResource("1_dym7d")
-use_collision = true
-
-[node name="Floor" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 0, -0.0575919)
-use_collision = true
-
-[node name="Obstacle" type="CSGCylinder3D" parent="Scenary"]
-transform = Transform3D(0.28643, 0, 0, 0, -1.71128e-08, -0.288454, 0, 0.391495, -1.26087e-08, -0.897378, 1.98295, 0)
-material_override = SubResource("ShaderMaterial_o5wfb")
-use_collision = true
-
-[node name="Obstacle2" type="CSGCylinder3D" parent="Scenary"]
-transform = Transform3D(0.28643, 0, 0, 0, -1.71128e-08, -0.288454, 0, 0.391495, -1.26087e-08, 0.429868, 3.65056, 0)
-material_override = SubResource("ShaderMaterial_s35yc")
-use_collision = true
-
-[node name="Pusher" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 0.603926, -2.31434)
-use_collision = true
-script = ExtResource("2_lalgk")
-
-[node name="Pusher2" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(12.9151, 0, 0, 0, 0.820836, 0, 0, 0, 10.8437, 0, 1.02886, -4.09824)
-use_collision = true
-script = ExtResource("2_lalgk")
-mov = 1.7
-rate = -0.01
-
-[node name="Wall2" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, -5.5, 4.889, -0.136)
-material_override = ExtResource("1_dym7d")
-use_collision = true
-
-[node name="Wall3" type="CSGBox3D" parent="Scenary"]
-transform = Transform3D(-4.8017e-07, 6.05145e-15, 0.502854, 3.83142e-15, 17.35, -1.75389e-16, -10.985, 6.05145e-15, -2.19804e-08, 5.5, 4.889, -0.136)
-material_override = ExtResource("1_dym7d")
-use_collision = true
+[node name="Scenary" parent="." instance=ExtResource("1_1hsw8")]
 
 [node name="Coin" parent="." instance=ExtResource("3_mrw7i")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0476756, 4.33847, -0.116519)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.28464, 7.31144, -0.335199)
 
 [node name="Coin2" parent="." instance=ExtResource("3_mrw7i")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.7585, 6.23202, -0.116519)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.21952, 7.31144, -0.335199)
 
 [node name="Coin3" parent="." instance=ExtResource("3_mrw7i")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.473709, 6.73409, -0.116519)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.87454, 6.3728, -0.335199)
 
 [node name="Coin4" parent="." instance=ExtResource("3_mrw7i")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.531515, 5.49948, -0.116519)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.12699, 7.31144, -0.335199)
 
-[node name="Coin_shooter" parent="." instance=ExtResource("5_7eaar")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.08165e-12, 8.669, 0.582)
+[node name="Coin5" parent="." instance=ExtResource("3_mrw7i")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0618756, 7.31144, -0.335199)
+
+[node name="Coin6" parent="." instance=ExtResource("3_mrw7i")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.28311, 6.3728, -0.335199)
+
+[node name="Coin7" parent="." instance=ExtResource("3_mrw7i")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.17626, 8.0566, -0.335199)
+
+[node name="Coin8" parent="." instance=ExtResource("3_mrw7i")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.24138, 8.0566, -0.335199)
+
+[node name="Coin9" parent="." instance=ExtResource("3_mrw7i")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.58637, 7.11796, -0.335199)
