@@ -14,7 +14,7 @@ environment = SubResource("Environment_en0tp")
 camera_attributes = SubResource("CameraAttributesPractical_2a5l4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29341, 10.83)
+transform = Transform3D(1, 0, 0, 0, 0.966205, 0.257774, 0, -0.257774, 0.966205, 0, 4.93153, 13.9888)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.802781, 0.636621, 0.634731, 0.437984, 0, 9.77663, 0)
