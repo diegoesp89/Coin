@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qn6gakeg0ow"]
+
+[ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="1_8mpnc"]
+
+[node name="Shooter" type="Node3D"]
+script = ExtResource("1_8mpnc")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]

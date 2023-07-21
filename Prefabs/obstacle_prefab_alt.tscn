@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cquksjy12mmtl"]
+[gd_scene load_steps=4 format=3 uid="uid://cquksjy12mmtl"]
 
-[ext_resource type="Script" path="res://Pusher.gd" id="1_1wvyj"]
-[ext_resource type="PhysicsMaterial" uid="uid://qxdla0w312lw" path="res://slider_physics_mat.tres" id="1_3vuuc"]
-[ext_resource type="Material" uid="uid://cbrac1ia0hmbh" path="res://Pusher_mat.tres" id="2_6wboa"]
+[ext_resource type="PhysicsMaterial" uid="uid://qxdla0w312lw" path="res://Materials/slider_physics_mat.tres" id="1_d6xnc"]
+[ext_resource type="Material" uid="uid://cbrac1ia0hmbh" path="res://Materials/Pusher_mat.tres" id="2_rk07b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o02yj"]
 
 [node name="ObstaclePrefab" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-physics_material_override = ExtResource("1_3vuuc")
-script = ExtResource("1_1wvyj")
-mov = 10.0
-rate = -0.01
+physics_material_override = ExtResource("1_d6xnc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
@@ -20,7 +16,7 @@ shape = SubResource("BoxShape3D_o02yj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
-material = ExtResource("2_6wboa")
+material = ExtResource("2_rk07b")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06212, 7.02193)
