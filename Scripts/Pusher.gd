@@ -15,5 +15,6 @@ func _process(_delta):
 	if(mov > top_range or mov < bot_range):
 		rate *= -1.0
 	self.position.z += rate
+	#print(mov)
 	mov += rate
 	pass
