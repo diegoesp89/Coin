@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvdp6ap54l43"]
+[gd_scene load_steps=5 format=3 uid="uid://dvdp6ap54l43"]
 
 [ext_resource type="Script" path="res://Pusher.gd" id="1_4yuo8"]
+[ext_resource type="PhysicsMaterial" uid="uid://qxdla0w312lw" path="res://slider_physics_mat.tres" id="1_b1vd2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o02yj"]
 
@@ -10,8 +11,9 @@ albedo_color = Color(0.781729, 0.0419926, 0.0233814, 1)
 [node name="ObstaclePrefab" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+physics_material_override = ExtResource("1_b1vd2")
 script = ExtResource("1_4yuo8")
-rate = 0.013
+rate = 0.01
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
