@@ -3,10 +3,7 @@ extends Node
 @export var coin_prefab = load("res://Prefabs/coin.tscn")
 @export var level: PackedScene = load("res://Prefabs/scene1.tscn")
 @export var count = 0
-@export var mov = 0
-@export var min_dist = -3
-@export var max_dist = 3
-@export var speed = 0.01
+@export var Shooter: Node
 
 func spawn():
 	var coin = coin_prefab.instantiate()
@@ -21,10 +18,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if(mov > max_dist or mov < min_dist):
-		speed *= -1.0
-	self.position.x += speed
-	mov += speed
 	if Input.is_key_pressed(KEY_SPACE):
 		spawn()
 	pass

@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5qn6gakeg0ow"]
+[gd_scene load_steps=2 format=3 uid="uid://b5qn6gakeg0ow"]
 
-[ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="1_8mpnc"]
-[ext_resource type="PackedScene" uid="uid://or5s51vq0ist" path="res://Prefabs/coin.tscn" id="2_451yv"]
-[ext_resource type="PackedScene" uid="uid://ccoktgqhvgx6u" path="res://Prefabs/scene1.tscn" id="3_gei2f"]
+[ext_resource type="Script" path="res://Scripts/CoinSpawnerMove.gd" id="1_t01lc"]
 
 [node name="Shooter" type="Node3D"]
-script = ExtResource("1_8mpnc")
-coin_prefab = ExtResource("2_451yv")
-level = ExtResource("3_gei2f")
+script = ExtResource("1_t01lc")
+mov = null
+min_dist = null
+max_dist = null
+speed = null
+x_pos = null
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.552, 0, 0, 0, 0.552, -0.05, 0, 0)
