@@ -10,6 +10,7 @@ height = 0.131
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mass = 200.0
 physics_material_override = ExtResource("1_d3005")
+sleeping = true
 linear_damp = 5.0
 
 [node name="Cylinder" type="CSGCylinder3D" parent="."]

@@ -4,11 +4,6 @@
 
 [node name="Shooter" type="Node3D"]
 script = ExtResource("1_t01lc")
-mov = null
-min_dist = null
-max_dist = null
-speed = null
-x_pos = null
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.552, 0, 0, 0, 0.552, -0.05, 0, 0)

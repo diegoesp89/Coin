@@ -1,23 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccoktgqhvgx6u"]
+[gd_scene load_steps=8 format=3 uid="uid://ccoktgqhvgx6u"]
 
 [ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="1_37020"]
 [ext_resource type="PackedScene" uid="uid://dhosspekmvbj" path="res://Prefabs/scenary.tscn" id="1_kfj6t"]
+[ext_resource type="PackedScene" uid="uid://or5s51vq0ist" path="res://Prefabs/coin.tscn" id="2_gto6f"]
 [ext_resource type="PackedScene" uid="uid://b5qn6gakeg0ow" path="res://Prefabs/coin_shooter.tscn" id="3_2saop"]
+[ext_resource type="PackedScene" uid="uid://bb7yqkd4rculd" path="res://Prefabs/Hud.tscn" id="5_b4d16"]
 
 [sub_resource type="Environment" id="Environment_en0tp"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2a5l4"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_37020")
+coin_prefab = ExtResource("2_gto6f")
+spawner = NodePath("Shooter")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_en0tp")
 camera_attributes = SubResource("CameraAttributesPractical_2a5l4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.966205, 0.257774, 0, -0.257774, 0.966205, 0, 4.93153, 13.9888)
+transform = Transform3D(1, 0, 0, 0, 0.987047, 0.160433, 0, -0.160433, 0.987047, 0, 2.63762, 12.1442)
 current = true
+fov = 58.3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.802781, 0.636621, 0.634731, 0.437984, 0, 9.77663, 0)
@@ -25,4 +30,6 @@ transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.8
 [node name="Scenary" parent="." instance=ExtResource("1_kfj6t")]
 
 [node name="Shooter" parent="." instance=ExtResource("3_2saop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0.168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69146, -0.0547891)
+
+[node name="Hud" parent="." instance=ExtResource("5_b4d16")]

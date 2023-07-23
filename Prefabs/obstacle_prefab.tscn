@@ -14,7 +14,7 @@ albedo_color = Color(0.781729, 0.0419926, 0.0233814, 1)
 physics_material_override = ExtResource("1_h7d86")
 script = ExtResource("2_xj6ls")
 rate = 0.005
-top_range = 3.0
+top_range = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
