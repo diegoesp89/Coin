@@ -1,17 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://or5s51vq0ist"]
+[gd_scene load_steps=5 format=3 uid="uid://or5s51vq0ist"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://b4dxxpgjmtrmk" path="res://Phys/coin_phys.tres" id="1_d3005"]
 [ext_resource type="Material" uid="uid://bejolbjn0xpol" path="res://Materials/coin_mat.tres" id="2_ac57n"]
+[ext_resource type="Script" path="res://Prefabs/coin_destroy.gd" id="2_vm821"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
 height = 0.131
 
-[node name="Coin_rigid_body" type="RigidBody3D"]
+[node name="Coin_rigid_body" type="RigidBody3D" groups=["Del"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mass = 200.0
 physics_material_override = ExtResource("1_d3005")
 sleeping = true
 linear_damp = 5.0
+script = ExtResource("2_vm821")
 
 [node name="Cylinder" type="CSGCylinder3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
