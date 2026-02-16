@@ -1,25 +1,19 @@
-extends RichTextLabel
-var counter = 0
+extends Control
 
-signal delete()
-# Called when the node enters the scene tree for the first time.
+@onready var score_list: RichTextLabel = $ScorePanel/ScoreList
+
 func _ready():
-	self.text = "Start"
-	delete.emit()
-	pass # Replace with function body.
-	
-func coin_deleted():
-	counter += 1
-	self.text = str(counter)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_released("coin_deleted"):
-		coin_deleted()
 	pass
 
-
-func _on_delete():
-	coin_deleted()
-	pass # Replace with function body.
+func update_scores(scores: Dictionary, total: int):
+	var text = "SCORES\n"
+	text += "---------\n"
+	
+	var sorted_names = scores.keys()
+	sorted_names.sort_custom(func(a, b): return scores[a] > scores[b])
+	
+	for name in sorted_names:
+		text += "%s: %d\n" % [name, scores[name]]
+	
+	text += "\nTotal: %d" % total
+	score_list.text = text

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccoktgqhvgx6u"]
+[gd_scene format=3 uid="uid://ccoktgqhvgx6u"]
 
-[ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="1_37020"]
+[ext_resource type="Script" uid="uid://cp2jymnh5bb5o" path="res://Scripts/CoinSpawner.gd" id="1_37020"]
+[ext_resource type="Script" uid="uid://d3k7o3e0yvwve" path="res://Scripts/HTTPServer.gd" id="1_http"]
 [ext_resource type="PackedScene" uid="uid://dhosspekmvbj" path="res://Prefabs/scenary.tscn" id="1_kfj6t"]
 [ext_resource type="PackedScene" uid="uid://or5s51vq0ist" path="res://Prefabs/coin.tscn" id="2_gto6f"]
 [ext_resource type="PackedScene" uid="uid://b5qn6gakeg0ow" path="res://Prefabs/coin_shooter.tscn" id="3_2saop"]
@@ -10,26 +11,31 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2a5l4"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawner")]
+[node name="Node3D" type="Node3D" unique_id=231644819 node_paths=PackedStringArray("spawner")]
 script = ExtResource("1_37020")
 coin_prefab = ExtResource("2_gto6f")
 spawner = NodePath("Shooter")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="HTTPServer" type="Node" parent="." unique_id=1000001]
+script = ExtResource("1_http")
+port = 8200
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1994458735]
 environment = SubResource("Environment_en0tp")
 camera_attributes = SubResource("CameraAttributesPractical_2a5l4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1235840942]
 transform = Transform3D(1, 0, 0, 0, 0.987047, 0.160433, 0, -0.160433, 0.987047, 0, 2.63762, 12.1442)
 current = true
 fov = 58.3
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=380229475]
 transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.802781, 0.636621, 0.634731, 0.437984, 0, 9.77663, 0)
+shadow_enabled = true
 
-[node name="Scenary" parent="." instance=ExtResource("1_kfj6t")]
+[node name="Scenary" parent="." unique_id=109299088 instance=ExtResource("1_kfj6t")]
 
-[node name="Shooter" parent="." instance=ExtResource("3_2saop")]
+[node name="Shooter" parent="." unique_id=324017059 instance=ExtResource("3_2saop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69146, -0.0547891)
 
-[node name="Hud" parent="." instance=ExtResource("5_b4d16")]
+[node name="Hud" parent="." unique_id=2087947596 instance=ExtResource("5_b4d16")]

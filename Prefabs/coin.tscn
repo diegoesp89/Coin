@@ -1,24 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://or5s51vq0ist"]
+[gd_scene load_steps=6 format=3 uid="uid://or5s51vq0ist"]
 
 [ext_resource type="Material" uid="uid://bejolbjn0xpol" path="res://Materials/coin_mat.tres" id="2_ac57n"]
+[ext_resource type="Material" path="res://Materials/coin_toon_mat.tres" id="2_toon"]
+[ext_resource type="Material" path="res://Materials/coin_outline_mat.tres" id="3_outline"]
 [ext_resource type="Script" path="res://Prefabs/coin_destroy.gd" id="2_vm821"]
+[ext_resource type="PhysicsMaterial" uid="uid://b4dxxpgjmtrmk" path="res://Phys/coin_phys.tres" id="3_phys"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
 height = 0.131
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
+top_radius = 0.7
+bottom_radius = 0.7
+height = 0.146482
+radial_segments = 12
+
 [node name="Coin_rigid_body" type="RigidBody3D" groups=["Del"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mass = 200.0
+mass = 1.0
 continuous_cd = true
-sleeping = true
-linear_damp = 5.0
+can_sleep = true
+linear_damp = 1.0
+angular_damp = 1.0
+physics_material_override = ExtResource("3_phys")
 script = ExtResource("2_vm821")
 
-[node name="Cylinder" type="CSGCylinder3D" parent="."]
+[node name="Outline" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-material_override = ExtResource("2_ac57n")
-height = 0.146482
-sides = 12
+mesh = SubResource("CylinderMesh_coin")
+surface_material_override/0 = ExtResource("3_outline")
+
+[node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("CylinderMesh_coin")
+surface_material_override/0 = ExtResource("2_toon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)

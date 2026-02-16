@@ -1,18 +1,15 @@
 extends RigidBody3D
 
 @export var Hud = load("res://Prefabs/Hud.tscn")
+@export var bounds_y = -2.0
+@export var bounds_x = 10.0
+@export var bounds_z = 10.0
 
+signal delete_coin(coin_name: String)
 
-signal delete_coin()
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if(self.position.y < -2.0):
-		print("killed")
-		#$Hud.coin_deleted()
+func _physics_process(_delta):
+	if position.y < bounds_y or position.y > bounds_x or \
+	   abs(position.x) > bounds_x or abs(position.z) > bounds_z:
+		var coin_name = name if name != "Coin" else "default"
+		delete_coin.emit(coin_name)
 		queue_free()
-	pass
