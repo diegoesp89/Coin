@@ -18,7 +18,6 @@ spawner = NodePath("Shooter")
 
 [node name="HTTPServer" type="Node" parent="." unique_id=1000001]
 script = ExtResource("1_http")
-port = 8200
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1994458735]
 environment = SubResource("Environment_en0tp")
@@ -30,7 +29,7 @@ current = true
 fov = 58.3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=380229475]
-transform = Transform3D(-0.770096, 0.493193, 0.404614, 0.0408103, -0.594876, 0.802781, 0.636621, 0.634731, 0.437984, 0, 9.77663, 0)
+transform = Transform3D(-0.9923934, -0.12310046, 0.0013374016, 0.042450596, -0.33198413, 0.9423293, -0.115557194, 0.93521816, 0.33468455, 0.1748327, 9.77663, -4.148837)
 shadow_enabled = true
 
 [node name="Scenary" parent="." unique_id=109299088 instance=ExtResource("1_kfj6t")]

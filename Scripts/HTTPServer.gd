@@ -108,12 +108,14 @@ func _on_coin_fell(coin_name: String):
 			active_bars += 1
 	
 	if active_bars > 0:
+		_play_sound("score")
 		for entry in name_entries:
 			var bar_name = entry[6] if entry.size() > 6 else "unknown"
 			if is_instance_valid(entry[2]) and is_valid_bar(entry[1]):
 				if not scores.has(bar_name):
 					scores[bar_name] = 0
 				scores[bar_name] += 1
+				_show_point_fx(bar_name, 1)
 		_update_hud()
 
 func _update_hud():
@@ -280,6 +282,9 @@ func _spawn_named_coin(coin_name: String, color: String = "", coin_type: String 
 	get_parent().add_child(coin)
 	coin.apply_central_impulse(Vector3(0, -5.0, 0))
 	
+	_spawn_particles(coin.position)
+	_play_sound("spawn")
+	
 	coin.delete_coin.connect(_on_coin_fell)
 	
 	_create_name_label(coin, coin_name, color, coin_type)
@@ -368,3 +373,52 @@ func _create_name_label(coin: Node3D, text: String, color: String = "", coin_typ
 	else:
 		label.modulate = final_color
 		name_entries.append([label, bar, coin, duration, false, 0.0, text, bar_is_rainbow])
+
+var point_fx_entries: Array = []
+
+func _spawn_particles(pos: Vector3):
+	var particles = GPUParticles3D.new()
+	particles.amount = 20
+	particles.lifetime = 0.5
+	particles.explosiveness = 1.0
+	particles.position = pos
+	
+	var material = ParticleProcessMaterial.new()
+	material.direction = Vector3(0, 1, 0)
+	material.spread = 180.0
+	material.initial_velocity_min = 2.0
+	material.initial_velocity_max = 4.0
+	material.gravity = Vector3(0, -5, 0)
+	material.scale_min = 0.1
+	material.scale_max = 0.3
+	
+	var sphere = SphereMesh.new()
+	sphere.radius = 0.1
+	sphere.height = 0.2
+	var sphere_mat = StandardMaterial3D.new()
+	sphere_mat.albedo_color = Color(1, 0.8, 0, 1)
+	sphere_mat.emission_enabled = true
+	sphere_mat.emission = Color(1, 0.8, 0, 1)
+	sphere_mat.emission_energy_multiplier = 2.0
+	sphere.material = sphere_mat
+	
+	particles.process_material = material
+	particles.draw_pass_1 = sphere
+	
+	get_parent().add_child(particles)
+	
+	var tween = create_tween()
+	tween.tween_interval(0.6)
+	tween.tween_callback(particles.queue_free)
+
+func _play_sound(sound_name: String):
+	pass
+
+func _show_point_fx(bar_name: String, points: int):
+	for entry in name_entries:
+		if entry.size() > 6 and entry[6] == bar_name:
+			var label: Label3D = entry[0]
+			if is_instance_valid(label):
+				var tween = create_tween()
+				tween.tween_property(label, "modulate", Color(1, 1, 0, 1), 0.1)
+				tween.tween_property(label, "modulate", Color(1, 1, 1, 1), 0.2)
