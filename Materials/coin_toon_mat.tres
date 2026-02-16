@@ -1,0 +1,48 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b153m7qd5fx8g"]
+
+[sub_resource type="Shader" id="Shader_toon_main"]
+code = "shader_type spatial;
+render_mode diffuse_toon, specular_toon;
+
+uniform vec3 albedo : source_color = vec3(1.0, 0.84, 0.0);
+uniform float metallic : hint_range(0.0, 1.0) = 0.0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.5;
+uniform vec3 emission : source_color = vec3(0.0);
+
+uniform float cell_shading_levels : hint_range(1.0, 10.0) = 3.0;
+uniform vec3 edge_color : source_color = vec3(0.85, 0.5, 0.1);
+uniform float edge_fresnel_power : hint_range(0.5, 10.0) = 3.0;
+
+void fragment() {
+	float fresnel = pow(1.0 - max(dot(NORMAL, VIEW), 0.0), edge_fresnel_power);
+	vec3 final_albedo = mix(albedo, edge_color, fresnel * 0.7);
+	
+	ALBEDO = final_albedo;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	EMISSION = emission;
+}
+
+void light() {
+	float NdotL = dot(NORMAL, LIGHT);
+	float light_intensity = (NdotL * 0.5 + 0.5);
+	
+	float cell = floor(light_intensity * cell_shading_levels) / cell_shading_levels;
+	cell = max(cell, 0.25);
+	
+	float diffuse = cell;
+	
+	DIFFUSE_LIGHT += LIGHT_COLOR * diffuse * ATTENUATION;
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_toon_main")
+shader_parameter/albedo = Color(1, 0.843137, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/cell_shading_levels = 3.0
+shader_parameter/edge_color = Color(0.85, 0.5, 0.1, 1)
+shader_parameter/edge_fresnel_power = 3.0

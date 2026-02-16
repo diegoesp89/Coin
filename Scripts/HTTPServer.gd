@@ -6,7 +6,6 @@ var pending_response: bool = false
 
 var name_entries: Array = []
 var scores: Dictionary = {}
-var total_coins: int = 0
 
 var BAR_DURATION: float = 30.0
 var RAINBOW_DURATION: float = 120.0
@@ -26,6 +25,13 @@ func _ready():
 		push_error("Failed to start server on port " + str(port))
 
 func _process(_delta):
+	if Input.is_key_pressed(KEY_M):
+		Engine.time_scale = 4.0
+	elif Input.is_key_pressed(KEY_N):
+		Engine.time_scale = 10.0
+	else:
+		Engine.time_scale = 1.0
+	
 	auto_spawn_timer += _delta
 	if auto_spawn_timer >= AUTO_SPAWN_INTERVAL:
 		auto_spawn_timer = 0.0
@@ -87,6 +93,8 @@ func _process(_delta):
 			else:
 				label.queue_free()
 				name_entries.erase(entry)
+	
+	_update_hud()
 
 func is_valid_bar(bar) -> bool:
 	return bar != null and is_instance_valid(bar)
@@ -99,18 +107,32 @@ func _on_coin_fell(coin_name: String):
 	
 	if active_bars > 0:
 		for entry in name_entries:
-			var bar_name = entry[6]
+			var bar_name = entry[6] if entry.size() > 6 else "unknown"
 			if is_instance_valid(entry[2]) and is_valid_bar(entry[1]):
 				if not scores.has(bar_name):
 					scores[bar_name] = 0
-				scores[bar_name] += active_bars
-		total_coins += active_bars
+				scores[bar_name] += 1
 		_update_hud()
 
 func _update_hud():
 	var hud = get_node_or_null("../Hud")
 	if hud and hud.has_method("update_scores"):
-		hud.update_scores(scores, total_coins)
+		hud.update_scores(scores)
+	
+	var active_info = {}
+	for entry in name_entries:
+		if is_instance_valid(entry[2]) and is_valid_bar(entry[1]):
+			var bar_name = entry[6] if entry.size() > 6 else "unknown"
+			var time_left = entry[3]
+			if not active_info.has(bar_name):
+				active_info[bar_name] = [time_left, 1]
+			else:
+				active_info[bar_name][1] += 1
+				if time_left > active_info[bar_name][0]:
+					active_info[bar_name][0] = time_left
+	
+	if hud and hud.has_method("update_active"):
+		hud.update_active(active_info, 0)
 
 func _handle_request():
 	var bytes_available = peer.get_available_bytes()
@@ -250,14 +272,14 @@ func _spawn_named_coin(coin_name: String, color: String = ""):
 	
 	var coin = coin_prefab.instantiate()
 	coin.name = coin_name
+	coin.player_name = coin_name
 	coin.position = spawner.position
 	get_parent().add_child(coin)
 	coin.apply_central_impulse(Vector3(0, -5.0, 0))
 	
-	coin.delete_coin.connect(_on_coin_fell.bind(coin_name))
+	coin.delete_coin.connect(_on_coin_fell)
 	
 	_create_name_label(coin, coin_name, color)
-	print("Spawned coin: ", coin_name)
 
 func _spawn_auto_coin():
 	var spawner = get_node_or_null("../Shooter")
@@ -283,14 +305,19 @@ func _spawn_auto_coin():
 	coin.delete_coin.connect(_on_auto_coin_fell)
 	print("Auto-coin spawned")
 
-func _on_auto_coin_fell():
+func _on_auto_coin_fell(_coin_name: String = ""):
 	var active_bars = 0
 	for entry in name_entries:
 		if is_instance_valid(entry[2]) and is_valid_bar(entry[1]):
 			active_bars += 1
 	
 	if active_bars > 0:
-		total_coins += active_bars
+		for entry in name_entries:
+			var bar_name = entry[6] if entry.size() > 6 else "unknown"
+			if is_instance_valid(entry[2]) and is_valid_bar(entry[1]):
+				if not scores.has(bar_name):
+					scores[bar_name] = 0
+				scores[bar_name] += 1
 		_update_hud()
 
 func _create_name_label(coin: Node3D, text: String, color: String = ""):
