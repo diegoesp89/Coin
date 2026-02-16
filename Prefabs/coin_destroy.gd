@@ -12,5 +12,6 @@ signal delete_coin(coin_name: String)
 func _physics_process(_delta):
 	if position.y < bounds_y or position.y > bounds_x or \
 	   abs(position.x) > bounds_x or abs(position.z) > bounds_z:
+		print(">>> COIN DESTROYED: ", player_name, " at position: ", position)
 		delete_coin.emit(player_name)
 		queue_free()

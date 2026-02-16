@@ -7,8 +7,9 @@ var pending_response: bool = false
 var name_entries: Array = []
 var scores: Dictionary = {}
 
-var BAR_DURATION: float = 30.0
-var RAINBOW_DURATION: float = 120.0
+var BAR_DURATION: float = 30.0       # free
+var PAID_DURATION: float = 120.0     # paid (2 minutos)
+var RAINBOW_DURATION: float = 300.0   # rainbow (5 minutos)
 var AUTO_SPAWN_INTERVAL: float = 10.0
 
 var auto_spawn_timer: float = 0.0
@@ -73,7 +74,8 @@ func _process(_delta):
 				
 				if time_left <= 0:
 					bar.queue_free()
-					entry[1] = null
+					label.queue_free()
+					name_entries.erase(entry)
 					continue
 				
 				if is_rainbow:
@@ -195,10 +197,11 @@ func _handle_get(path_and_query: String):
 	if params.has("name") and params["name"] != "":
 		var coin_name = params["name"]
 		var color = params.get("color", "")
-		_spawn_named_coin(coin_name, color)
-		_send_response("200 OK", "Coin spawned: " + coin_name)
+		var coin_type = params.get("type", "free")
+		_spawn_named_coin(coin_name, color, coin_type)
+		_send_response("200 OK", "Coin spawned: " + coin_name + " (" + coin_type + ")")
 	else:
-		_send_response("200 OK", "Usage: /?key=" + api_key + "&name=coin_name&color=rainbow")
+		_send_response("200 OK", "Usage: /?key=" + api_key + "&name=coin_name&type=free|paid|rainbow&color=rainbow")
 	
 	peer.disconnect_from_host()
 	pending_response = false
@@ -253,7 +256,7 @@ func _url_decode(text: String) -> String:
 	text = text.replace("+", " ")
 	return text
 
-func _spawn_named_coin(coin_name: String, color: String = ""):
+func _spawn_named_coin(coin_name: String, color: String = "", coin_type: String = "free"):
 	var spawner = get_node_or_null("../Shooter")
 	if spawner == null:
 		push_error("Shooter node not found!")
@@ -279,7 +282,7 @@ func _spawn_named_coin(coin_name: String, color: String = ""):
 	
 	coin.delete_coin.connect(_on_coin_fell)
 	
-	_create_name_label(coin, coin_name, color)
+	_create_name_label(coin, coin_name, color, coin_type)
 
 func _spawn_auto_coin():
 	var spawner = get_node_or_null("../Shooter")
@@ -320,7 +323,7 @@ func _on_auto_coin_fell(_coin_name: String = ""):
 				scores[bar_name] += 1
 		_update_hud()
 
-func _create_name_label(coin: Node3D, text: String, color: String = ""):
+func _create_name_label(coin: Node3D, text: String, color: String = "", coin_type: String = "free"):
 	var label = Label3D.new()
 	label.name = "NameLabel"
 	label.text = text
@@ -339,13 +342,21 @@ func _create_name_label(coin: Node3D, text: String, color: String = ""):
 	
 	get_parent().add_child(bar)
 	
-	var is_rainbow = color.to_lower() == "rainbow"
+	var is_rainbow_type = coin_type.to_lower() == "rainbow"
+	var is_paid_type = coin_type.to_lower() == "paid"
+	var is_rainbow_color = color.to_lower() == "rainbow"
 	var final_color = Color(1, 1, 1, 1)
-	var bar_is_rainbow = is_rainbow
-	var duration = RAINBOW_DURATION if is_rainbow else BAR_DURATION
 	
-	if is_rainbow:
-		name_entries.append([label, bar, coin, duration, true, 0.0, text, true])
+	var duration = BAR_DURATION
+	if is_rainbow_type:
+		duration = RAINBOW_DURATION
+	elif is_paid_type:
+		duration = PAID_DURATION
+	
+	var bar_is_rainbow = is_rainbow_color or is_rainbow_type
+	
+	if is_rainbow_color:
+		name_entries.append([label, bar, coin, duration, true, 0.0, text, bar_is_rainbow])
 	elif color.length() == 6:
 		var r = color.substr(0, 2).hex_to_int() / 255.0
 		var g = color.substr(2, 2).hex_to_int() / 255.0
@@ -353,7 +364,7 @@ func _create_name_label(coin: Node3D, text: String, color: String = ""):
 		final_color = Color(r, g, b, 1)
 		label.modulate = final_color
 		bar.modulate = final_color
-		name_entries.append([label, bar, coin, duration, false, 0.0, text, false])
+		name_entries.append([label, bar, coin, duration, false, 0.0, text, bar_is_rainbow])
 	else:
 		label.modulate = final_color
-		name_entries.append([label, bar, coin, duration, false, 0.0, text, false])
+		name_entries.append([label, bar, coin, duration, false, 0.0, text, bar_is_rainbow])
