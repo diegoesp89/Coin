@@ -1,11 +1,16 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bejolbjn0xpol"]
 
 [resource]
+resource_name = "coin_mat"
 albedo_color = Color(1, 1, 1, 1)
-albedo_texture = ExtResource("2_albedo")
+albedo_texture/ExtResourceID = 1
+albedo_texture/ExtResource = "res://Materials/coin_albedo.png"
 normal_enabled = true
-normal_texture = ExtResource("2_normal")
+normal_texture/ExtResourceID = 1
+normal_texture/ExtResource = "res://Materials/coin_normal.png"
 roughness_enabled = true
-roughness_texture = ExtResource("2_roughness")
+roughness_texture/ExtResourceID = 1
+roughness_texture/ExtResource = "res://Materials/coin_roughness.png"
 height_enabled = true
-height_texture = ExtResource("2_height")
+height_texture/ExtResourceID = 1
+height_texture/ExtResource = "res://Materials/coin_height.png"
