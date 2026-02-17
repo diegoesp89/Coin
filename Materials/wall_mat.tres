@@ -1,4 +1,15 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://itvrldwxnk6i"]
 
 [resource]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture/ExtResourceID = 1
+albedo_texture/ExtResource = "res://Materials/wall_albedo.png"
+normal_enabled = true
+normal_texture/ExtResourceID = 1
+normal_texture/ExtResource = "res://Materials/wall_normal.png"
+roughness_enabled = true
+roughness_texture/ExtResourceID = 1
+roughness_texture/ExtResource = "res://Materials/wall_roughness.png"
+height_enabled = true
+height_texture/ExtResourceID = 1
+height_texture/ExtResource = "res://Materials/wall_height.png"
