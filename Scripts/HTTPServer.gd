@@ -24,6 +24,11 @@ func _ready():
 		print("HTTP Server started on port ", port)
 	else:
 		push_error("Failed to start server on port " + str(port))
+	
+	var hud = get_node_or_null("../Hud")
+	if hud and hud.has_method("get_scores"):
+		scores = hud.get_scores()
+		_update_hud()
 
 func _process(_delta):
 	if Input.is_key_pressed(KEY_M):
