@@ -23,6 +23,10 @@ func _apply_texture():
 		mat.roughness_enabled = true
 		mat.height_texture = load("res://Materials/coin_height.png")
 		mat.height_enabled = true
+		
+		mat.uv1_scale = Vector3(2, 2, 2)
+		mat.uv1_offset = Vector3(0, 0, 0)
+		
 		coin_mesh.material_override = mat
 
 func _physics_process(_delta):
