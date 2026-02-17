@@ -1,30 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://or5s51vq0ist"]
+[gd_scene format=3 uid="uid://or5s51vq0ist"]
 
-[ext_resource type="Script" path="res://Prefabs/coin_destroy.gd" id="2_vm821"]
+[ext_resource type="Script" uid="uid://r177pkfaptsq" path="res://Prefabs/coin_destroy.gd" id="2_vm821"]
 [ext_resource type="PhysicsMaterial" uid="uid://b4dxxpgjmtrmk" path="res://Phys/coin_phys.tres" id="3_phys"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
-height = 0.02
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
 top_radius = 0.7
 bottom_radius = 0.7
-height = 0.02
+height = 0.1
 
-[node name="Coin_rigid_body" type="RigidBody3D" groups=["Del"]]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-mass = 1.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
+height = 0.1
+radius = 0.49121094
+
+[node name="Coin_rigid_body" type="RigidBody3D" unique_id=321593464 groups=["Del"]]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+physics_material_override = ExtResource("3_phys")
 continuous_cd = true
-can_sleep = true
 linear_damp = 1.0
 angular_damp = 1.0
-physics_material_override = ExtResource("3_phys")
 script = ExtResource("2_vm821")
 
-[node name="CoinMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="CoinMesh" type="MeshInstance3D" parent="." unique_id=2025710781]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CylinderMesh_coin")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=531988913]
 shape = SubResource("CylinderShape3D_ctc5v")
