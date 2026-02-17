@@ -1,25 +1,24 @@
 [gd_scene format=3 uid="uid://dhosspekmvbj"]
 
+[ext_resource type="Script" path="res://Scripts/Scenary.gd" id="1_scenery"]
 [ext_resource type="Material" uid="uid://itvrldwxnk6i" path="res://Materials/wall_mat.tres" id="1_00xxr"]
 [ext_resource type="PackedScene" uid="uid://dvdp6ap54l43" path="res://Prefabs/obstacle_prefab.tscn" id="3_f6ap4"]
 [ext_resource type="PackedScene" uid="uid://d2d6bjdu4pva7" path="res://Prefabs/Obstacle.tscn" id="3_ohoon"]
 [ext_resource type="PackedScene" uid="uid://cquksjy12mmtl" path="res://Prefabs/obstacle_prefab_alt.tscn" id="4_fwc6w"]
 
 [node name="Scenary" type="Node" unique_id=359581292]
+script = ExtResource("1_scenery")
 
 [node name="Wall" type="CSGBox3D" parent="." unique_id=627816262]
 transform = Transform3D(10.985, -0.0144034, 0.000161484, 0.0091194, 17.35, -1.0066e-06, -0.00352764, 3.96023e-05, 0.502854, 0, 9.48477, -0.682099)
-material_override = ExtResource("1_00xxr")
 use_collision = true
 
 [node name="Wall2" type="CSGBox3D" parent="." unique_id=1147034990]
 transform = Transform3D(-6.91675e-07, 6.05145e-15, 0.52429, 5.51909e-15, 17.35, -1.82866e-16, -15.8237, 6.05145e-15, -2.29174e-08, -3, 4.889, -0.136)
-material_override = ExtResource("1_00xxr")
 use_collision = true
 
 [node name="Wall3" type="CSGBox3D" parent="." unique_id=518746079]
 transform = Transform3D(-6.91675e-07, 6.05145e-15, 0.52429, 5.51909e-15, 17.35, -1.82866e-16, -15.8237, 6.05145e-15, -2.29174e-08, 3, 4.889, -0.136)
-material_override = ExtResource("1_00xxr")
 use_collision = true
 
 [node name="Obstacle" parent="." unique_id=690904727 instance=ExtResource("3_ohoon")]
