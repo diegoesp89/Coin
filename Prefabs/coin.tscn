@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://or5s51vq0ist"]
+[gd_scene load_steps=8 format=3 uid="uid://or5s51vq0ist"]
 
 [ext_resource type="Material" uid="uid://bejolbjn0xpol" path="res://Materials/coin_mat.tres" id="2_ac57n"]
+[ext_resource type="Texture2D" uid="uid://c0albedo" path="res://Materials/coin_albedo.png" id="2_albedo"]
+[ext_resource type="Texture2D" uid="uid://c0normal" path="res://Materials/coin_normal.png" id="2_normal"]
+[ext_resource type="Texture2D" uid="uid://c0roughness" path="res://Materials/coin_roughness.png" id="2_roughness"]
+[ext_resource type="Texture2D" uid="uid://c0height" path="res://Materials/coin_height.png" id="2_height"]
 [ext_resource type="Material" path="res://Materials/coin_toon_mat.tres" id="2_toon"]
 [ext_resource type="Material" path="res://Materials/coin_outline_mat.tres" id="3_outline"]
 [ext_resource type="Script" path="res://Prefabs/coin_destroy.gd" id="2_vm821"]
@@ -8,6 +12,9 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
 height = 0.131
+
+[sub_resource type="QuadMesh" id="QuadMesh_coin"]
+size = Vector2(1.4, 1.4)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
 top_radius = 0.7
@@ -30,10 +37,10 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CylinderMesh_coin")
 surface_material_override/0 = ExtResource("3_outline")
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
+[node name="CoinMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-mesh = SubResource("CylinderMesh_coin")
-surface_material_override/0 = ExtResource("2_toon")
+mesh = SubResource("QuadMesh_coin")
+surface_material_override/0 = ExtResource("2_ac57n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)

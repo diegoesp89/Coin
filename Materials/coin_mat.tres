@@ -1,7 +1,11 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bejolbjn0xpol"]
 
 [resource]
-albedo_color = Color(1, 0.843137, 0, 1)
-metallic = 0.9
-metallic_specular = 0.8
-roughness = 0.3
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("2_albedo")
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+roughness_enabled = true
+roughness_texture = ExtResource("2_roughness")
+height_enabled = true
+height_texture = ExtResource("2_height")
