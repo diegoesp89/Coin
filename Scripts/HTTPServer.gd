@@ -279,6 +279,7 @@ func _spawn_named_coin(coin_name: String, color: String = "", coin_type: String 
 	coin.name = coin_name
 	coin.player_name = coin_name
 	coin.position = spawner.position
+	coin.rotation = Vector3(PI / 2, 0, 0)
 	get_parent().add_child(coin)
 	coin.apply_central_impulse(Vector3(0, -5.0, 0))
 	
@@ -307,6 +308,7 @@ func _spawn_auto_coin():
 	var coin = coin_prefab.instantiate()
 	coin.name = "AutoCoin"
 	coin.position = spawner.position
+	coin.rotation = Vector3(PI / 2, 0, 0)
 	get_parent().add_child(coin)
 	coin.apply_central_impulse(Vector3(0, -5.0, 0))
 	
