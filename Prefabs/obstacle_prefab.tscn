@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvdp6ap54l43"]
+[gd_scene format=3 uid="uid://dvdp6ap54l43"]
 
-[ext_resource type="Script" path="res://Scripts/Pusher.gd" id="2_xj6ls"]
+[ext_resource type="Script" uid="uid://trvkas07qtd4" path="res://Scripts/Pusher.gd" id="2_xj6ls"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5x1bq"]
 
@@ -21,27 +21,25 @@ tracks/0/keys = PackedFloat32Array(0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12, 
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hcs01"]
 _data = {
-"obs_move": SubResource("Animation_3px87")
+&"obs_move": SubResource("Animation_3px87")
 }
 
-[node name="ObstaclePrefab" type="Node3D"]
+[node name="ObstaclePrefab" type="Node3D" unique_id=1503838200]
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." node_paths=PackedStringArray("ani_player")]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1569209112 node_paths=PackedStringArray("ani_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 0.286358)
 script = ExtResource("2_xj6ls")
 rate = 0.005
 top_range = 5.0
 ani_player = NodePath("../AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=943321375]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.23896, 0)
 shape = SubResource("BoxShape3D_5x1bq")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D" unique_id=2059951210]
 transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, 0, 0, 0)
 material = SubResource("StandardMaterial3D_qi1om")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_hcs01")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=110898330]
+libraries/ = SubResource("AnimationLibrary_hcs01")

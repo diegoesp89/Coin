@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bb7yqkd4rculd"]
 
-[ext_resource type="Script" uid="uid://dxq1r2h3m4n5p" path="res://Prefabs/HudPoints.gd" id="1_3v6we"]
+[ext_resource type="Script" uid="uid://cik1v2ph7x0a" path="res://Prefabs/HudPoints.gd" id="1_3v6we"]
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" unique_id=523847680]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3v6we")
 
-[node name="ActivePanel" type="PanelContainer" parent="."]
+[node name="ActivePanel" type="PanelContainer" parent="." unique_id=1207656130]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -20,25 +20,24 @@ offset_top = -250.0
 offset_right = 250.0
 grow_vertical = 0
 
-[node name="ActiveList" type="RichTextLabel" parent="ActivePanel"]
+[node name="ActiveList" type="RichTextLabel" parent="ActivePanel" unique_id=445090366]
 layout_mode = 2
 text = "ACTIVE
 ---------
 "
 fit_content = true
 
-[node name="ScorePanel" type="PanelContainer" parent="."]
+[node name="ScorePanel" type="PanelContainer" parent="." unique_id=1433068920]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -250.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ScoreList" type="RichTextLabel" parent="ScorePanel"]
+[node name="ScoreList" type="RichTextLabel" parent="ScorePanel" unique_id=1418930331]
 layout_mode = 2
 text = "SCORES
 ---------

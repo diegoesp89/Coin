@@ -1,19 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2d6bjdu4pva7"]
+[gd_scene format=3 uid="uid://d2d6bjdu4pva7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prpmb"]
 
-[node name="Obstacle" type="RigidBody3D"]
+[node name="Obstacle" type="RigidBody3D" unique_id=637527623]
 transform = Transform3D(0.999474, 0, 0, 0, -4.36884e-08, -0.999474, 0, 0.999474, -4.36884e-08, 0, 0, 0)
 gravity_scale = 0.0
 sleeping = true
 lock_rotation = true
 freeze = true
 
-[node name="Cylinder" type="CSGCylinder3D" parent="."]
+[node name="Cylinder" type="CSGCylinder3D" parent="." unique_id=1563152506]
 transform = Transform3D(0.157, 0, 0, 0, 4.404, 0, 0, 2.84217e-14, 0.157, 0, 0.215952, -9.43956e-09)
 height = 0.146482
 sides = 12
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=306459584]
 transform = Transform3D(0.0707107, -1.69997e-08, -0.0707107, 3.09086e-09, 0.55, -1.28028e-09, 0.0707107, -7.04153e-09, 0.0707107, 0, 0.233735, -1.02169e-08)
 shape = SubResource("BoxShape3D_prpmb")

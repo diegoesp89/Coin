@@ -9,6 +9,22 @@ var player_name: String = "default"
 
 signal delete_coin(coin_name: String)
 
+func _ready():
+	_apply_texture()
+
+func _apply_texture():
+	var coin_mesh = get_node_or_null("CoinMesh")
+	if coin_mesh:
+		var mat = StandardMaterial3D.new()
+		mat.albedo_texture = load("res://Materials/coin_albedo.png")
+		mat.normal_texture = load("res://Materials/coin_normal.png")
+		mat.normal_enabled = true
+		mat.roughness_texture = load("res://Materials/coin_roughness.png")
+		mat.roughness_enabled = true
+		mat.height_texture = load("res://Materials/coin_height.png")
+		mat.height_enabled = true
+		coin_mesh.material_override = mat
+
 func _physics_process(_delta):
 	if position.y < bounds_y or position.y > bounds_x or \
 	   abs(position.x) > bounds_x or abs(position.z) > bounds_z:

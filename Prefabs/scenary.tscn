@@ -1,92 +1,92 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhosspekmvbj"]
+[gd_scene format=3 uid="uid://dhosspekmvbj"]
 
 [ext_resource type="Material" uid="uid://itvrldwxnk6i" path="res://Materials/wall_mat.tres" id="1_00xxr"]
 [ext_resource type="PackedScene" uid="uid://dvdp6ap54l43" path="res://Prefabs/obstacle_prefab.tscn" id="3_f6ap4"]
 [ext_resource type="PackedScene" uid="uid://d2d6bjdu4pva7" path="res://Prefabs/Obstacle.tscn" id="3_ohoon"]
 [ext_resource type="PackedScene" uid="uid://cquksjy12mmtl" path="res://Prefabs/obstacle_prefab_alt.tscn" id="4_fwc6w"]
 
-[node name="Scenary" type="Node"]
+[node name="Scenary" type="Node" unique_id=359581292]
 
-[node name="Wall" type="CSGBox3D" parent="."]
+[node name="Wall" type="CSGBox3D" parent="." unique_id=627816262]
 transform = Transform3D(10.985, -0.0144034, 0.000161484, 0.0091194, 17.35, -1.0066e-06, -0.00352764, 3.96023e-05, 0.502854, 0, 9.48477, -0.682099)
 material_override = ExtResource("1_00xxr")
 use_collision = true
 
-[node name="Wall2" type="CSGBox3D" parent="."]
+[node name="Wall2" type="CSGBox3D" parent="." unique_id=1147034990]
 transform = Transform3D(-6.91675e-07, 6.05145e-15, 0.52429, 5.51909e-15, 17.35, -1.82866e-16, -15.8237, 6.05145e-15, -2.29174e-08, -3, 4.889, -0.136)
 material_override = ExtResource("1_00xxr")
 use_collision = true
 
-[node name="Wall3" type="CSGBox3D" parent="."]
+[node name="Wall3" type="CSGBox3D" parent="." unique_id=518746079]
 transform = Transform3D(-6.91675e-07, 6.05145e-15, 0.52429, 5.51909e-15, 17.35, -1.82866e-16, -15.8237, 6.05145e-15, -2.29174e-08, 3, 4.889, -0.136)
 material_override = ExtResource("1_00xxr")
 use_collision = true
 
-[node name="Obstacle" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle" parent="." unique_id=690904727 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.48491, 3.55375, -0.429695)
 
-[node name="Obstacle2" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle2" parent="." unique_id=890317641 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.688538, 3.55375, -0.429695)
 
-[node name="Obstacle3" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle3" parent="." unique_id=279371505 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.963931, 3.55375, -0.429695)
 
-[node name="Obstacle4" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle4" parent="." unique_id=203139598 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.49556, 3.55375, -0.429695)
 
-[node name="Obstacle6" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle6" parent="." unique_id=48490302 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.60826, 4.74359, -0.429695)
 
-[node name="Obstacle7" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle7" parent="." unique_id=1358871207 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0442081, 4.74359, -0.429695)
 
-[node name="Obstacle8" parent="." instance=ExtResource("3_ohoon")]
+[node name="Obstacle8" parent="." unique_id=1352889825 instance=ExtResource("3_ohoon")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.57584, 4.74359, -0.429695)
 
-[node name="ObstaclePrefab2" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab2" parent="." unique_id=925604143 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46876, 0.603674, -0.261581)
 
-[node name="ObstaclePrefab3" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab3" parent="." unique_id=438466152 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53124, 0.603674, -0.261581)
 
-[node name="ObstaclePrefab6" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab6" parent="." unique_id=1068227195 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53976, 0.373018, 2.09175)
 
-[node name="ObstaclePrefab7" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab7" parent="." unique_id=1843282454 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42987, 0.373018, 2.09175)
 
-[node name="ObstaclePrefab11" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab11" parent="." unique_id=1622832451 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42987, 0.373018, -0.822134)
 
-[node name="ObstaclePrefab14" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab14" parent="." unique_id=1839856770 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46856, -0.0919878, 3.80447)
 
-[node name="ObstaclePrefab15" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab15" parent="." unique_id=1479977049 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53144, -0.0919878, 3.80447)
 
-[node name="ObstaclePrefab18" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab18" parent="." unique_id=1096063477 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46856, 0.0916467, 1.08413)
 
-[node name="ObstaclePrefab19" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab19" parent="." unique_id=1451182032 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53144, -0.0919878, 0.975051)
 
-[node name="ObstaclePrefab22" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab22" parent="." unique_id=1159147197 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46856, 0.603674, -2.95144)
 
-[node name="ObstaclePrefab23" parent="." instance=ExtResource("3_f6ap4")]
+[node name="ObstaclePrefab23" parent="." unique_id=2032515261 instance=ExtResource("3_f6ap4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53144, 0.603674, -2.95144)
 
-[node name="ObstaclePrefab26" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab26" parent="." unique_id=1656458207 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53976, -0.572723, 6.27304)
 
-[node name="ObstaclePrefab27" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab27" parent="." unique_id=129232921 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42987, -0.572723, 6.27304)
 
-[node name="ObstaclePrefab30" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab30" parent="." unique_id=486274663 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53976, -0.572723, 3.35916)
 
-[node name="ObstaclePrefab31" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab31" parent="." unique_id=1146090752 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42987, -0.572723, 3.35916)
 
-[node name="ObstaclePrefab12" parent="." instance=ExtResource("4_fwc6w")]
+[node name="ObstaclePrefab12" parent="." unique_id=1597646547 instance=ExtResource("4_fwc6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55611, 0.373018, -0.822134)

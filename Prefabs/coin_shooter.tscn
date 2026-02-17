@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5qn6gakeg0ow"]
+[gd_scene format=3 uid="uid://b5qn6gakeg0ow"]
 
-[ext_resource type="Script" path="res://Scripts/CoinSpawnerMove.gd" id="1_t01lc"]
+[ext_resource type="Script" uid="uid://cf8r6jx5wgr53" path="res://Scripts/CoinSpawnerMove.gd" id="1_t01lc"]
 
-[node name="Shooter" type="Node3D"]
+[node name="Shooter" type="Node3D" unique_id=884691359]
 script = ExtResource("1_t01lc")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=854692246]
 transform = Transform3D(0.1, 0, 0, 0, 0.552, 0, 0, 0, 0.552, -0.05, 0, 0)
