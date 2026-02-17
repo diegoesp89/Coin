@@ -7,10 +7,15 @@ var pending_response: bool = false
 var name_entries: Array = []
 var scores: Dictionary = {}
 
-var BAR_DURATION: float = 30.0       # free
-var PAID_DURATION: float = 120.0     # paid (2 minutos)
-var RAINBOW_DURATION: float = 300.0   # rainbow (5 minutos)
+var BAR_DURATION: float = 30.0
+var PAID_DURATION: float = 120.0
+var RAINBOW_DURATION: float = 300.0
 var AUTO_SPAWN_INTERVAL: float = 10.0
+var MAX_COINS: int = 200
+var SPAWN_FORCE: float = 5.0
+
+var TIME_SCALE_FAST: float = 4.0
+var TIME_SCALE_FASTEST: float = 10.0
 
 var auto_spawn_timer: float = 0.0
 
@@ -32,9 +37,9 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_key_pressed(KEY_M):
-		Engine.time_scale = 4.0
+		Engine.time_scale = TIME_SCALE_FAST
 	elif Input.is_key_pressed(KEY_N):
-		Engine.time_scale = 10.0
+		Engine.time_scale = TIME_SCALE_FASTEST
 	else:
 		Engine.time_scale = 1.0
 	
@@ -275,7 +280,7 @@ func _spawn_named_coin(coin_name: String, color: String = "", coin_type: String 
 		if child.is_in_group("Del"):
 			count += 1
 	
-	var max_coins = 200
+	var max_coins = MAX_COINS
 	if count >= max_coins:
 		print("Max coins reached!")
 		return
@@ -306,7 +311,7 @@ func _spawn_auto_coin():
 		if child.is_in_group("Del"):
 			count += 1
 	
-	var max_coins = 200
+	var max_coins = MAX_COINS
 	if count >= max_coins:
 		return
 	
