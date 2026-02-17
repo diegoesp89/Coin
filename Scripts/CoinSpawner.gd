@@ -43,6 +43,7 @@ func _do_spawn():
 	coin.position.x = pos_x_spawner
 	coin.position.y = pos_y_spawner
 	coin.position.z = pos_z_spawner
+	coin.rotation = Vector3(PI / 2, 0, 0)
 	add_child(coin)
 	coin.apply_central_impulse(Vector3(0, -spawn_force, 0))
 	count += 1
