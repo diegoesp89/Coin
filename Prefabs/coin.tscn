@@ -10,10 +10,9 @@ height = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ctc5v"]
 height = 0.1
-radius = 0.49121094
+radius = 0.7
 
 [node name="Coin_rigid_body" type="RigidBody3D" unique_id=321593464 groups=["Del"]]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 physics_material_override = ExtResource("3_phys")
 continuous_cd = true
 linear_damp = 1.0
@@ -21,7 +20,6 @@ angular_damp = 1.0
 script = ExtResource("2_vm821")
 
 [node name="CoinMesh" type="MeshInstance3D" parent="." unique_id=2025710781]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CylinderMesh_coin")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=531988913]
